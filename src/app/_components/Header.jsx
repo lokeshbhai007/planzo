@@ -6,6 +6,7 @@ import {useState , useEffect} from "react"
 import Image from 'next/image';
 import { useUser, UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import { LogIn } from "lucide-react";
 import Link from "next/link";
 
 function Header() {
@@ -44,17 +45,12 @@ function Header() {
            <UserButton afterSignOutUrl="/" />
          </div>
        ) : (
-        <div className="flex gap-2 sm:gap-3 items-center">
+        <div className="flex items-center">
           <Link href="/sign-in">
-            <Button className="rounded-full bg-white text-black border hover:text-amber-50 hover:bg-black text-xs sm:text-sm px-3 sm:px-4">
-              Sign In
-            </Button>
-          </Link>
-           
-          <Link href="/sign-up">
-            <Button className="rounded-full text-xs sm:text-sm px-3 sm:px-4">
+            <Button className="rounded-full text-xs sm:text-sm px-3 sm:px-4 flex items-center gap-2">
+              <LogIn size={16} />
               <span className="hidden sm:inline">Get Started</span>
-              <span className="sm:hidden">Start</span>
+              <span className="sm:hidden">Get Started</span>
             </Button>
           </Link>
        </div>
