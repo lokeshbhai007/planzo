@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Planzo",
   description: "Smart expense tracker",
+  icons: {
+    icon: '/chart-donut.svg',
+    shortcut: '/chart-donut.svg',
+    apple: '/chart-donut.svg',
+  },
 };
 
 export default function RootLayout({ children }) {
