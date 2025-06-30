@@ -159,8 +159,8 @@ function Dashboard() {
 
   return (
     <div className="p-8 bg-">
-      <h2 className="font-bold capitalize text-4xl">Hi, { "Lokesh Mondal" || user?.fullName} 👋</h2>
-      <p className="text-gray-500">
+      <h2 className="font-bold capitalize text-4xl">Hi, { "Lokesh Mondal" || user?.fullName} <span className="hidden md:text-4xl md:inline">👋</span></h2>
+      <p className="text-gray-500 pt-2">
         Here's what happenning with your money, Lets Manage your expense
       </p>
 

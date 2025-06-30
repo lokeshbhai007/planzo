@@ -27,22 +27,19 @@ function ExpenseListTable({ expensesList, refreshData }) {
         <h2 className="font-bold">Action</h2>
       </div>
       {expensesList.map((expenses, index) => (
-        <div key={index} className="grid grid-cols-4 bg-slate-50 rounded-bl-xl rounded-br-xl p-2">
-          <h2>{expenses.name}</h2>
-          <h2>{expenses.amount}</h2>
-          <h2>{expenses.createdAt}</h2>
+        <div
+          key={index}
+          className="grid grid-cols-4 bg-slate-50 rounded-bl-xl rounded-br-xl p-2"
+        >
+          <h2 className="text-xs sm:text-sm">{expenses.name}</h2>
+          <h2 className="text-xs pl-4 sm:text-sm">{expenses.amount}</h2>
+          <h2 className="text-xs sm:text-sm">{expenses.createdAt}</h2>
           <h2
             onClick={() => deleteExpense(expenses)}
-            className="text-red-500 cursor-pointer"
+            className="text-red-500 pl-2 text-xs sm:text-sm cursor-pointer"
           >
             Delete
           </h2>
-          {/* <h2>
-            <Trash
-              className="text-red-500 cursor-pointer"
-              onClick={() => deleteExpense(expenses)}
-            />
-          </h2> */}
         </div>
       ))}
     </div>
