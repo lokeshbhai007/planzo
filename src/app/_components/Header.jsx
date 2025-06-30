@@ -22,7 +22,7 @@ function Header() {
   }, []);
 
   return (
-    <div className={`fixed top-0 w-full z-50 transition-all duration-300 p-5 px-20 flex justify-between items-center shadow-sm ${
+    <div className={`fixed top-0 w-full z-50 transition-all duration-300 p-5 px-36 flex justify-between items-center shadow-sm ${
         scrolled
           ? "backdrop-blur-lg shadow-lg"
           : "bg-transparent"

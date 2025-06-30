@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import formatNumber from "../../../../../utils/index"
+import { getFinancialAdvice } from "../../../../../utils/getFinancial";
 
 function CardInfo({budgetList , incomeList}) {
   
@@ -23,20 +24,20 @@ function CardInfo({budgetList , incomeList}) {
     }
   }, [budgetList, incomeList]);
 
-  // useEffect(() => {
-  //   if (totalBudget > 0 || totalIncome > 0 || totalSpend > 0) {
-  //     const fetchFinancialAdvice = async () => {
-  //       const advice = await getFinancialAdvice(
-  //         totalBudget,
-  //         totalIncome,
-  //         totalSpend
-  //       );
-  //       setFinancialAdvice(advice);
-  //     };
+  useEffect(() => {
+    if (totalBudget > 0 || totalIncome > 0 || totalSpend > 0) {
+      const fetchFinancialAdvice = async () => {
+        const advice = await getFinancialAdvice(
+          totalBudget,
+          totalIncome,
+          totalSpend
+        );
+        setFinancialAdvice(advice);
+      };
 
-  //     fetchFinancialAdvice();
-  //   }
-  // }, [totalBudget, totalIncome, totalSpend]);
+      fetchFinancialAdvice();
+    }
+  }, [totalBudget, totalIncome, totalSpend]);
 
   const CalculateCardInfo = () => {
     console.log(budgetList);
@@ -66,14 +67,22 @@ function CardInfo({budgetList , incomeList}) {
           <div className="p-7 border mt-4 -mb-1 rounded-2xl flex items-center justify-between">
             <div className="">
               <div className="flex mb-2 flex-row space-x-1 items-center ">
-                <h2 className="text-md ">Finan Smart AI</h2>
+                <h2 className="text-md ">Planzo AI</h2>
                 <Sparkles
                   className="rounded-full text-white w-8 h-8 p-2
-    bg-gradient-to-r
-    from-pink-500
-    via-red-500
-    to-yellow-500
-    background-animate"
+                    bg-gradient-to-r
+                    from-pink-500
+                    via-red-500
+                    to-yellow-500
+                    animate-pulse
+                    bg-[length:200%_200%]
+                    animate-gradient-x
+                    shadow-pink-500/50
+                    transition-all
+                    duration-300"
+                  style={{
+                    animation: 'gradient-x 3s ease infinite, pulse 2s ease-in-out infinite'
+                  }}
                 />
               </div>
               <h2 className="font-light text-md">
@@ -129,9 +138,24 @@ function CardInfo({budgetList , incomeList}) {
           ))}
         </div>
       )}
+      
+      <style jsx>{`
+        @keyframes gradient-x {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        
+        .animate-gradient-x {
+          background-size: 200% 200%;
+          animation: gradient-x 3s ease infinite;
+        }
+      `}</style>
     </div>
   );
 }
-
 
 export default CardInfo
