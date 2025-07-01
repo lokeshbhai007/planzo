@@ -20,7 +20,8 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { toast } from "sonner";
+// import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import EditBudget from "../_components/EditBudget";
 
@@ -85,7 +86,7 @@ function ExpensesScreen({ params }) {
         .where(eq(Budgets.id, resolvedParams.id))
         .returning();
     }
-    toast("Budget Deleted !");
+    toast.success("Budget Deleted !");
     route.replace("/dashboard/budgets");
   };
 

@@ -3,7 +3,8 @@ import { Expenses } from "../../../../../../utils/schema";
 import { eq } from "drizzle-orm";
 import { Trash } from "lucide-react";
 import React from "react";
-import { toast } from "sonner";
+// import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 
 function ExpenseListTable({ expensesList, refreshData }) {
   const deleteExpense = async (expense) => {
@@ -13,7 +14,7 @@ function ExpenseListTable({ expensesList, refreshData }) {
       .returning();
 
     if (result) {
-      toast("Expense Deleted!");
+      toast.success("Expense Deleted!");
       refreshData();
     }
   };

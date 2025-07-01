@@ -5,7 +5,8 @@ import { Budgets, Expenses } from "../../../../../../utils/schema";
 import { Loader } from "lucide-react";
 import moment from "moment";
 import React, { useState } from "react";
-import { toast } from "sonner";
+// import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 
 function AddExpense({ budgetId, user, refreshData }) {
   const [name, setName] = useState();
@@ -31,7 +32,7 @@ function AddExpense({ budgetId, user, refreshData }) {
     if (result) {
       setLoading(false);
       refreshData();
-      toast("New Expense Added!");
+      toast.success("New Expense Added!");
     }
     setLoading(false);
   };

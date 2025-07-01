@@ -16,7 +16,8 @@ import { Input } from "@/components/ui/input";
 import { db } from "../../../../../../utils/dbConfig";
 import { Incomes } from "../../../../../../utils/schema";
 import { useUser } from "@clerk/nextjs";
-import { toast } from "sonner";
+// import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 
 function CreateIncomes({ refreshData }) {
   const [emojiIcon, setEmojiIcon] = useState("😀");

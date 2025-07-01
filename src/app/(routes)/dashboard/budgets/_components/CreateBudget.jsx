@@ -16,7 +16,8 @@ import { Input } from "@/components/ui/input";
 import { db } from "../../../../../../utils/dbConfig";
 import { Budgets } from "../../../../../../utils/schema";
 import { useUser } from "@clerk/nextjs";
-import { toast } from "sonner";
+// import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 
 function CreateBudget({ refreshData }) {
   const [emojiIcon, setEmojiIcon] = useState("😀");
@@ -43,7 +44,7 @@ function CreateBudget({ refreshData }) {
 
     if (result) {
       refreshData();
-      toast("New Budget Created!");
+      toast.success("New Budget Created!");
     }
   };
   return (

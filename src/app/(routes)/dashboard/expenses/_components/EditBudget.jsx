@@ -18,7 +18,8 @@ import { Input } from "@/components/ui/input";
 import { db } from "../../../../../../utils/dbConfig";
 import { Budgets } from "../../../../../../utils/schema";
 import { eq } from "drizzle-orm";
-import { toast } from "sonner";
+// import { toast } from "sonner";
+import { toast } from "react-hot-toast";
 function EditBudget({ budgetInfo, refreshData }) {
   const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon);
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
@@ -48,7 +49,7 @@ function EditBudget({ budgetInfo, refreshData }) {
 
     if (result) {
       refreshData();
-      toast("Budget Updated!");
+      toast.success("Budget Updated!");
     }
   };
   return (

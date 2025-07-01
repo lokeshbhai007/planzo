@@ -7,6 +7,7 @@ import { Budgets } from "../../../../utils/schema";
 import { useUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { useRouter } from "next/navigation";
+import { Toaster } from "react-hot-toast";
 
 function layout({ children }) {
   const { user } = useUser();
@@ -46,6 +47,7 @@ function layout({ children }) {
         <div className="pt-16 md:pt-0">
           <DashboardHeader />
         </div>
+        <Toaster position="top-right" />
         
         {/* Page Content */}
         <div className="p-4 md:p-6">
