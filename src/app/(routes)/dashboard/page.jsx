@@ -106,7 +106,7 @@ function Dashboard() {
     }
   };
 
-  console.log("list of budgets", budgetList);
+  // console.log("list of budgets", budgetList);
 
   /**
    * Get Income stream list
@@ -121,9 +121,12 @@ function Dashboard() {
           ),
         })
         .from(Incomes)
+        .where(eq(Incomes.createdBy, user?.primaryEmailAddress?.emailAddress))
         .groupBy(Incomes.id);
 
       setIncomeList(result);
+      console.log("show income : "+ incomeList);
+      
     } catch (error) {
       console.error("Error fetching income list:", error);
     }
@@ -159,7 +162,7 @@ function Dashboard() {
 
   return (
     <div className="p-8 bg-">
-      <h2 className="font-bold capitalize text-4xl">Hi, { "Lokesh Mondal" || user?.fullName} <span className="hidden md:text-4xl md:inline">👋</span></h2>
+      <h2 className="font-bold capitalize text-4xl">Hi, { user?.fullName || "User"} <span className="hidden md:text-4xl md:inline">👋</span></h2>
       <p className="text-gray-500 pt-2">
         Here's what happenning with your money, Lets Manage your expense
       </p>

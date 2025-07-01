@@ -27,6 +27,7 @@ function IncomeList() {
       .groupBy(Incomes.id)
       .orderBy(desc(Incomes.id));
     setIncomelist(result);
+    
   };
 
   return (

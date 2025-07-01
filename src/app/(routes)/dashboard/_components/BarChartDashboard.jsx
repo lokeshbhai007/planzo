@@ -26,14 +26,14 @@ function BarChartDashboard({ budgetList }) {
             top: 7,
           }}
         >
-          <XAxis dataKey="name" />
+          <XAxis dataKey="name" hide />
           <YAxis />
           <Tooltip />
           <Legend />
           {/* Option 1: Side by side bars */}
           {/* <Bar dataKey="totalSpend" fill="#4845d2" name="Total Spent" />
           <Bar dataKey="amount" fill="#C3C2FF" name="Budget Amount" /> */}
-          
+                     
           {/* Option 2: Stacked bars showing spent vs remaining (uncomment to use) */}
           <Bar dataKey="totalSpend" stackId="a" fill="#4845d2" name="Spent" />
           <Bar dataKey="remaining" stackId="a" fill="#C3C2FF" name="Remaining" />
