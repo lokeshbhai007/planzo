@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  <br>
+  Planzo
+  <br>
+</h1>
 
-## Getting Started
+<h4 align="center">A smart expense tracker and financial advisor web app built using <a href="https://nextjs.org" target="_blank">Next.js</a>, <a href="https://deepmind.google/technologies/gemini/" target="_blank">Gemini AI</a>, and modern UI tools.</h4>
 
-First, run the development server:
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#live-project">Live Project</a> •
+  <a href="#tech-stack">Tech Stack</a>
+</p>
+
+![screenshot](https://raw.githubusercontent.com/lokeshbhai007/Planzo/main/public/preview.png)
+
+---
+
+## Key Features
+
+* 💸 **AI-Based Expense Analysis**  
+  Get insights into your spending habits powered by Gemini AI.
+
+* 📊 **Interactive Charts & Reports**  
+  Visualize monthly expenses, savings, and budget goals clearly.
+
+* 📆 **Smart Budget Planning**  
+  Set monthly budgets and receive alerts or advice when overspending.
+
+* 🤖 **Financial Tips Generator**  
+  Get smart saving/investment tips based on your financial behavior.
+
+* 🧠 **Personalized Dashboard**  
+  View personalized goals, savings insights, and track progress over time.
+
+* ☁️ **Cloud Synced Data**  
+  Secure user data storage using NeonDB.
+
+* ⚡ **Fast and Responsive**  
+  Powered by Next.js for a seamless experience on all devices.
+
+* 🌐 **Cross-Platform**  
+  Optimized for desktop and mobile browsers.
+
+---
+
+## How To Use
+
+To run this app locally, make sure you have [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) installed.
+
+Run the following commands in your terminal:
 
 ```bash
+# Clone this repository
+git clone https://github.com/lokeshbhai007/Planzo.git
+
+# Go into the project directory
+cd Planzo
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Live Project
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You can try the live version of the project here:  
 
-## Learn More
+👉 [https://planzo-advisor.vercel.app/](https://planzo-advisor.vercel.app/)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [Node.js](https://nodejs.org/)
+- [Neon DB](https://neon.com/)
+- [Gemini AI](https://deepmind.google/technologies/gemini/)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Portfolio [lokesh-portfolio](https://lokesh-portfolio-gamma.vercel.app/) &nbsp;&middot;&nbsp;
+> GitHub [@lokeshbhai007](https://github.com/lokeshbhai007) &nbsp;&middot;&nbsp;
+> LinkedIn [@lokesh-mondal](https://www.linkedin.com/in/lokesh-mondal)
