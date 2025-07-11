@@ -9,37 +9,37 @@ import BarChartDashboard from "./_components/BarChartDashboard";
 import BudgetItem from "./budgets/_components/BudgetItem";
 import ExpenseListTable from "./expenses/_components/ExpenseListTable";
 
-// Beautiful Loading Component - Glowing Ring Style
+// Professional Dark Mode Loading Component
 const DashboardLoading = () => {
   return (
-    <div className="min-h-screen  flex items-center justify-center">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center transition-colors duration-300">
       <div className="text-center space-y-8">
-        {/* Glowing Ring Animation */}
-        <div className="relative w-20 h-20 mx-auto">
-          <div className="absolute inset-0 rounded-full border-4 border-gray-700"></div>
-          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-500 animate-spin"></div>
-          <div className="absolute inset-1 rounded-full border-2 border-transparent border-t-purple-400 animate-spin" style={{animationDuration: '0.8s', animationDirection: 'reverse'}}></div>
-          <div className="absolute inset-0 rounded-full bg-blue-500 opacity-20 animate-ping"></div>
+        {/* Enhanced Glowing Ring Animation */}
+        <div className="relative w-24 h-24 mx-auto">
+          <div className="absolute inset-0 rounded-full border-4 border-gray-200 dark:border-gray-700"></div>
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-500 dark:border-t-blue-400 animate-spin"></div>
+          <div className="absolute inset-1 rounded-full border-2 border-transparent border-t-purple-400 dark:border-t-purple-300 animate-spin" style={{animationDuration: '0.8s', animationDirection: 'reverse'}}></div>
+          <div className="absolute inset-0 rounded-full bg-blue-500 dark:bg-blue-400 opacity-20 animate-ping"></div>
         </div>
 
         {/* Loading Text */}
         <div className="space-y-3">
-          <h2 className="text-2xl font-bold text-gray-800">Loading Dashboard</h2>
-          <p className="text-gray-400">Fetching your financial data...</p>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Loading Dashboard</h2>
+          <p className="text-gray-600 dark:text-gray-300">Fetching your financial data...</p>
         </div>
 
         {/* Progress Steps */}
         <div className="space-y-4 max-w-sm mx-auto">
-          <div className="flex items-center space-x-3 text-sm text-gray-400">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300">
+            <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
             <span>Loading budgets...</span>
           </div>
-          <div className="flex items-center space-x-3 text-sm text-gray-400">
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+          <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300">
+            <div className="w-2 h-2 bg-blue-500 dark:bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
             <span>Fetching expenses...</span>
           </div>
-          <div className="flex items-center space-x-3 text-sm text-gray-400">
-            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+          <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300">
+            <div className="w-2 h-2 bg-purple-500 dark:bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
             <span>Calculating insights...</span>
           </div>
         </div>
@@ -106,8 +106,6 @@ function Dashboard() {
     }
   };
 
-  // console.log("list of budgets", budgetList);
-
   /**
    * Get Income stream list
    */
@@ -161,34 +159,55 @@ function Dashboard() {
   }
 
   return (
-    <div className="p-8 bg-">
-      <h2 className="font-bold capitalize text-4xl">Hi, { user?.fullName || "User"} <span className="hidden md:text-4xl md:inline">👋</span></h2>
-      <p className="text-gray-500 pt-2">
-        Here's what happenning with your money, Lets Manage your expense
-      </p>
+    <div className="p-8 bg-gray-50 dark:bg-gray-900 min-h-screen transition-colors duration-300">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="font-bold capitalize text-4xl text-gray-800 dark:text-gray-100">
+          Hi, {user?.fullName || "User"} 
+          <span className="hidden md:text-4xl md:inline">👋</span>
+        </h2>
+        <p className="text-gray-600 dark:text-gray-300 pt-2">
+          Here's what's happening with your money, Let's Manage your expense
+        </p>
 
-      <CardInfo budgetList={budgetList} incomeList={incomeList} />
-      <div className="grid grid-cols-1 lg:grid-cols-3 mt-6 gap-5">
-        <div className="lg:col-span-2">
-          <BarChartDashboard budgetList={budgetList} />
-
-          <ExpenseListTable
-            expensesList={expensesList}
-            refreshData={() => getBudgetList()}
-          />
+        <div className="mt-8">
+          <CardInfo budgetList={budgetList} incomeList={incomeList} />
         </div>
-        <div className="grid gap-5">
-          <h2 className="font-bold text-lg">Latest Budgets</h2>
-          {budgetList?.length > 0
-            ? budgetList.map((budget, index) => (
-                <BudgetItem budget={budget} key={index} />
-              ))
-            : [1, 2, 3, 4].map((item, index) => (
-                <div
-                  key={index}
-                  className="h-[180px] w-full bg-slate-200 rounded-lg animate-pulse"
-                ></div>
-              ))}
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 mt-8 gap-6">
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm dark:shadow-gray-700/20 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+              <BarChartDashboard budgetList={budgetList} />
+            </div>
+
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm dark:shadow-gray-700/20 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+              <ExpenseListTable
+                expensesList={expensesList}
+                refreshData={() => getBudgetList()}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm dark:shadow-gray-700/20 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+              <h2 className="font-bold text-lg text-gray-800 dark:text-gray-100 mb-4">
+                Latest Budgets
+              </h2>
+              <div className="space-y-4">
+                {budgetList?.length > 0
+                  ? budgetList.map((budget, index) => (
+                      <div key={index} className="transform transition-transform duration-200 hover:scale-[1.02]">
+                        <BudgetItem budget={budget} />
+                      </div>
+                    ))
+                  : [1, 2, 3, 4].map((item, index) => (
+                      <div
+                        key={index}
+                        className="h-[180px] w-full bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"
+                      ></div>
+                    ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

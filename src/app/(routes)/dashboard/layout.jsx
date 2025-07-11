@@ -8,8 +8,9 @@ import { useUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { useRouter } from "next/navigation";
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider, useTheme } from "./_components/ThemeProvider"; // Adjust path as needed
 
-function layout({ children }) {
+function DashboardLayout({ children }) {
   const { user } = useUser();
   const router = useRouter();
   
@@ -30,7 +31,7 @@ function layout({ children }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Desktop Sidebar - Fixed positioning */}
       <div className="fixed md:w-64 hidden md:block h-full z-30">
         <SideNav />
@@ -47,7 +48,12 @@ function layout({ children }) {
         <div className="pt-16 md:pt-0">
           <DashboardHeader />
         </div>
-        <Toaster position="top-right" />
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            className: 'dark:bg-gray-800 dark:text-white',
+          }}
+        />
         
         {/* Page Content */}
         <div className="p-4 md:p-6">
@@ -58,4 +64,15 @@ function layout({ children }) {
   );
 }
 
-export default layout;
+// Wrapper component that provides theme context
+function Layout({ children }) {
+  return (
+    <ThemeProvider>
+      <DashboardLayout>
+        {children}
+      </DashboardLayout>
+    </ThemeProvider>
+  );
+}
+
+export default Layout;

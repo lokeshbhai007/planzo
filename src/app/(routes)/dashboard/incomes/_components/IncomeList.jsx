@@ -10,6 +10,7 @@ import IncomeItem from "./IncomeItem";
 function IncomeList() {
   const [incomelist, setIncomelist] = useState([]);
   const { user } = useUser();
+  
   useEffect(() => {
     user && getIncomelist();
   }, [user]);
@@ -27,15 +28,11 @@ function IncomeList() {
       .groupBy(Incomes.id)
       .orderBy(desc(Incomes.id));
     setIncomelist(result);
-    
   };
 
   return (
     <div className="mt-7">
-      <div
-        className="grid grid-cols-1
-        md:grid-cols-2 lg:grid-cols-3 gap-5"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <CreateIncomes refreshData={() => getIncomelist()} />
         {incomelist?.length > 0
           ? incomelist.map((budget, index) => (
@@ -44,8 +41,8 @@ function IncomeList() {
           : [1, 2, 3, 4, 5].map((item, index) => (
               <div
                 key={index}
-                className="w-full bg-slate-200 rounded-lg
-        h-[150px] animate-pulse"
+                className="w-full bg-gray-200 dark:bg-gray-700 rounded-lg
+                h-[150px] animate-pulse transition-colors duration-300"
               ></div>
             ))}
       </div>

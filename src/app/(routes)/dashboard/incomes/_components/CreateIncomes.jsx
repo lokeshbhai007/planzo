@@ -75,19 +75,22 @@ function CreateIncomes({ refreshData }) {
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
           <div
-            className="bg-slate-100 p-10 rounded-2xl
-            items-center flex flex-col border-2 border-dashed
-            cursor-pointer hover:shadow-md h-[170px]"
+            className="bg-slate-100 dark:bg-gray-700 p-10 rounded-2xl
+            items-center flex flex-col border-2 border-dashed border-gray-300 dark:border-gray-600
+            cursor-pointer hover:shadow-md dark:hover:shadow-gray-700/20 h-[170px] 
+            transition-all duration-300 hover:scale-[1.02] text-gray-700 dark:text-gray-200"
             onClick={() => setIsOpen(true)}
           >
             <h2 className="text-3xl">+</h2>
             <h2>Create New Income Source</h2>
           </div>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <DialogHeader>
-            <DialogTitle>Create New Income Source</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-gray-800 dark:text-gray-100">
+              Create New Income Source
+            </DialogTitle>
+            <DialogDescription className="text-gray-600 dark:text-gray-300">
               Add a new source of income to track your earnings.
             </DialogDescription>
           </DialogHeader>
@@ -95,7 +98,9 @@ function CreateIncomes({ refreshData }) {
           <div className="mt-5">
             <Button
               variant="outline"
-              className="text-lg"
+              className="text-lg border-gray-200 dark:border-gray-600 
+              bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200
+              hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-300"
               onClick={() => setOpenEmojiPicker(!openEmojiPicker)}
             >
               {emojiIcon}
@@ -110,20 +115,30 @@ function CreateIncomes({ refreshData }) {
               />
             </div>
             <div className="mt-2">
-              <h2 className="text-black font-medium my-1">Source Name</h2>
+              <h2 className="text-gray-800 dark:text-gray-100 font-medium my-1">
+                Source Name
+              </h2>
               <Input
                 placeholder="e.g. Youtube"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 
+                text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400
+                focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-300"
               />
             </div>
             <div className="mt-2">
-              <h2 className="text-black font-medium my-1">Monthly Amount</h2>
+              <h2 className="text-gray-800 dark:text-gray-100 font-medium my-1">
+                Monthly Amount
+              </h2>
               <Input
                 type="number"
                 placeholder="e.g. 5000₹"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
+                className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 
+                text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400
+                focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-300"
               />
             </div>
           </div>
@@ -132,7 +147,10 @@ function CreateIncomes({ refreshData }) {
             <Button
               disabled={!(name && amount)}
               onClick={onCreateIncomes}
-              className="mt-5 w-full rounded-full"
+              className="mt-5 w-full rounded-full bg-blue-600 hover:bg-blue-700 
+              dark:bg-blue-500 dark:hover:bg-blue-600 text-white 
+              disabled:bg-gray-400 dark:disabled:bg-gray-600 
+              transition-colors duration-300"
             >
               Create Income Source
             </Button>

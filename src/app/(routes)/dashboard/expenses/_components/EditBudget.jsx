@@ -18,12 +18,11 @@ import { Input } from "@/components/ui/input";
 import { db } from "../../../../../../utils/dbConfig";
 import { Budgets } from "../../../../../../utils/schema";
 import { eq } from "drizzle-orm";
-// import { toast } from "sonner";
 import { toast } from "react-hot-toast";
+
 function EditBudget({ budgetInfo, refreshData }) {
   const [emojiIcon, setEmojiIcon] = useState(budgetInfo?.icon);
   const [openEmojiPicker, setOpenEmojiPicker] = useState(false);
-
   const [name, setName] = useState();
   const [amount, setAmount] = useState();
 
@@ -36,6 +35,7 @@ function EditBudget({ budgetInfo, refreshData }) {
       setName(budgetInfo.name);
     }
   }, [budgetInfo]);
+
   const onUpdateBudget = async () => {
     const result = await db
       .update(Budgets)
@@ -52,23 +52,25 @@ function EditBudget({ budgetInfo, refreshData }) {
       toast.success("Budget Updated!");
     }
   };
+
   return (
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="flex space-x-2 gap-2 rounded-full">
-            {" "}
+          <Button className="flex space-x-2 gap-2 rounded-full bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white transition-colors duration-200">
             <PenBox className="w-4" /> Edit
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <DialogHeader>
-            <DialogTitle>Update Budget</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-gray-800 dark:text-gray-100">
+              Update Budget
+            </DialogTitle>
+            <DialogDescription className="text-gray-600 dark:text-gray-300">
               <div className="mt-5">
                 <Button
                   variant="outline"
-                  className="text-lg"
+                  className="text-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 transition-colors duration-200"
                   onClick={() => setOpenEmojiPicker(!openEmojiPicker)}
                 >
                   {emojiIcon}
@@ -80,23 +82,30 @@ function EditBudget({ budgetInfo, refreshData }) {
                       setEmojiIcon(e.emoji);
                       setOpenEmojiPicker(false);
                     }}
+                    theme="auto"
                   />
                 </div>
                 <div className="mt-2">
-                  <h2 className="text-black font-medium my-1">Budget Name</h2>
+                  <h2 className="text-gray-800 dark:text-gray-100 font-medium my-1">
+                    Budget Name
+                  </h2>
                   <Input
                     placeholder="e.g. Home Decor"
                     defaultValue={budgetInfo?.name}
                     onChange={(e) => setName(e.target.value)}
+                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-200"
                   />
                 </div>
                 <div className="mt-2">
-                  <h2 className="text-black font-medium my-1">Budget Amount</h2>
+                  <h2 className="text-gray-800 dark:text-gray-100 font-medium my-1">
+                    Budget Amount
+                  </h2>
                   <Input
                     type="number"
                     defaultValue={budgetInfo?.amount}
                     placeholder="e.g. 5000$"
                     onChange={(e) => setAmount(e.target.value)}
+                    className="bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-200"
                   />
                 </div>
               </div>
@@ -107,7 +116,7 @@ function EditBudget({ budgetInfo, refreshData }) {
               <Button
                 disabled={!(name && amount)}
                 onClick={() => onUpdateBudget()}
-                className="mt-5 w-full rounded-full"
+                className="mt-5 w-full rounded-full bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed text-white transition-colors duration-200"
               >
                 Update Budget
               </Button>
